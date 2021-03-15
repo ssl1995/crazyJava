@@ -1,4 +1,4 @@
-package java基础.对象;
+package java基础.对象.部门员工管理系统;
 
 public class DepartmentTest {
     public static void main(String[] args) {
@@ -21,6 +21,10 @@ public class DepartmentTest {
         worker3.setDepartment(department1);
         worker3.setPost(post3);
 
+        department1.addWorker(worker1);
+        department1.addWorker(worker2);
+        department1.addWorker(worker3);
+
         Worker worker4 = new Worker("张美美", "S004", "女", 26);
         worker4.setDepartment(department2);
         worker4.setPost(post3);
@@ -33,14 +37,13 @@ public class DepartmentTest {
         worker6.setDepartment(department2);
         worker6.setPost(post3);
 
-        Worker[] workers1 = {worker1, worker2, worker3};
-        Worker[] workers2 = {worker3, worker4, worker5};
+        department2.addWorker(worker4);
+        department2.addWorker(worker5);
+        department2.addWorker(worker6);
 
-        department1.setWorkers(workers1);
-        department1.setWorkerCount();
-
-        department2.setWorkers(workers2);
-        department2.setWorkerCount();
+        System.out.println("人事部总共有:" + department1.getWorkerCount() + "名员工");
+        System.out.println("市场部总共有:" + department2.getWorkerCount() + "名员工");
+        System.out.println("*************************");
 
         worker1.info();
         worker2.info();
