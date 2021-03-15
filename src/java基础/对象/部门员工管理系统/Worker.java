@@ -1,4 +1,4 @@
-package java基础.对象;
+package java基础.对象.部门员工管理系统;
 
 
 public class Worker {
@@ -15,8 +15,10 @@ public class Worker {
     public Worker(String name, String workId, String sex, int age) {
         this.name = name;
         this.workId = workId;
-        this.sex = sex;
-        this.age = age;
+//        this.sex = sex;
+//        this.age = age;
+        this.sex = setSex(sex);
+        this.age = setAge(age);
     }
 
     public String getName() {
@@ -39,13 +41,14 @@ public class Worker {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public String setSex(String sex) {
         if ("男".equals(sex)) {
-            this.sex = sex;
+            return sex;
         } else if ("女".equals(sex)) {
-            this.sex = sex;
+            return sex;
         } else {
-            this.sex = "男";
+            // 性别输入有误，就统一为男
+            return "男";
         }
     }
 
@@ -53,11 +56,12 @@ public class Worker {
         return age;
     }
 
-    public void setAge(int age) {
+    public int setAge(int age) {
         if (age < 18 || age > 65) {
-            this.age = 18;
+            return age;
         } else {
-            this.age = age;
+            // 年纪输入有误，统一为18
+            return 18;
         }
     }
 
@@ -81,11 +85,11 @@ public class Worker {
     public void info() {
         System.out.println(
                 "姓名:" + name + "\n" +
-                "工号:" + workId + "\n" +
-                "性别:" + sex + "\n" +
-                "年龄:" + age + "\n" +
-                "部门:" + department.getDepartmentName() + "\n" +
-                "职务:" + post.getPostName() + "\n" +
-                "*************************");
+                        "工号:" + workId + "\n" +
+                        "性别:" + sex + "\n" +
+                        "年龄:" + age + "\n" +
+                        "部门:" + department.getDepartmentName() + "\n" +
+                        "职务:" + post.getPostName() + "\n" +
+                        "*************************");
     }
 }

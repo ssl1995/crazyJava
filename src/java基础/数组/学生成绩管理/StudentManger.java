@@ -1,4 +1,4 @@
-package java基础.数组;
+package java基础.数组.学生成绩管理;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -17,6 +17,8 @@ public class StudentManger {
             } catch (InputMismatchException e) {
                 System.out.println("输入的数据格式有误，请输入整型数据");
                 sc.next();
+                // catch块中跳出本次循环，不让程序结束
+                continue;
             }
             switch (userInput) {
                 case 0:
@@ -28,30 +30,33 @@ public class StudentManger {
                 case 2:
                     if (arr == null || arr.length < 1) {
                         System.out.println("尚未初始化数组，请输入1");
-                        sc.next();
+//                        sc.next();
+                        break;
                     }
                     manger.getAverage(arr);
                     break;
                 case 3:
                     if (arr == null || arr.length < 1) {
                         System.out.println("尚未初始化数组，请输入1");
-                        sc.next();
+                        break;
                     }
                     manger.getNumOf85(arr);
                     break;
                 case 4:
                     if (arr == null || arr.length < 1) {
                         System.out.println("尚未初始化数组，请输入1");
-                        sc.next();
+                        break;
                     }
                     manger.updateArr(arr);
                     break;
                 case 5:
-                    manger.printArr(arr);
+                    if (arr == null || arr.length < 1) {
+                        System.out.println("尚未初始化数组，请输入1");
+                        break;
+                    }
                     break;
                 default:
                     System.out.println("输入数字过大,请输入0-5的数字");
-                    manger.notice();
                     break;
             }
         }
@@ -145,10 +150,19 @@ public class StudentManger {
         int k = 0;
         double n = 0.0;
         try {
-            k = sc.nextInt();
+            // 判断用户输入的索引位置是否正确
+            int temp = sc.nextInt();
+            if (temp >= 0 && temp <= arr.length - 1) {
+                k = temp;
+            } else {
+                System.out.println("修改位置错误，请输入(从0到" + (arr.length - 1) + "):");
+                sc.next();
+            }
         } catch (InputMismatchException e) {
             System.out.println("输入的数据格式有误，请输入从0到" + (arr.length - 1) + "的整数:");
             sc.next();
+            // catch中添加return，提前结束方法防止k=0修改原数据
+            return;
         }
         System.out.println("请输入新数据:");
         try {
@@ -156,6 +170,7 @@ public class StudentManger {
         } catch (InputMismatchException e) {
             System.out.println("输入的数据格式有误，请输入小数类型:");
             sc.next();
+            return;
         }
         arr[k] = n;
         printArr(arr);

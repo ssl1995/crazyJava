@@ -1,4 +1,4 @@
-package java基础.对象;
+package java基础.对象.部门员工管理系统;
 
 public class Post {
     private String postId;
