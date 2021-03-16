@@ -5,8 +5,9 @@ public class DepartmentTest {
         Post post1 = new Post("P001", "经理");
         Post post2 = new Post("P002", "助理");
         Post post3 = new Post("P002", "职员");
-
+        // 人事部
         Department department1 = new Department("D001", "人事部");
+        // 市场部
         Department department2 = new Department("D002", "市场部");
 
         Worker worker1 = new Worker("张铭", "S001", "男", 29);
